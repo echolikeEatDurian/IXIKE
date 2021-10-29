@@ -1,0 +1,2417 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>西南科技大学教务管理系统 - 学习进程规划 - 选课课程表</title>
+<link rel="shortcut icon" href="/acadmicRes/assets/favicon.ico" />
+<link href="/acadmicRes/assets/css/system.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="/acadmicRes/assets/script/jquery-1.7.2.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+<!-- defaultHeader-->
+<div id="blueBar">
+	<div class="clearfix" id="pageHead">
+		<h1 id="pageLogo"><a href="/acadmicManager/index.cfm" title="Home"></a></h1>
+		<div id="jewelContainer">
+			
+		</div>
+		<div class="clearfix" id="headNav">
+			<div class="lfloat">
+				
+			</div>
+			<div class="rfloat">
+				<ul id="pageNav" role="navigation">
+					<li id="navHome"><a href="/acadmicManager/index.cfm" class="topNavLink">主页</a></li>
+					
+					<li id="navAccount">
+						<a class="topNavLink" id="navAccountLink" href="index.cfm?event=studentProfile:DEFAULT_EVENT" rel="toggle" role="button">个人账户<i class="accountPulldown"></i></a>
+						<!-- /navAccountLinkPop-->
+						<ul role="navigation" id="navAccountLinkPop">
+							<li id="navAccountInfo" class="clearfix"><a href="index.cfm?event=studentProfile:DEFAULT_EVENT" tabindex="-1" id="navAccountPic" aria-hidden="true"><img class="img" src="/acadmicRes/assets/graphic/userSmall.png" style="background-image: url('user/profile_s.jpg');"></a><a href="index.cfm?event=studentProfile:DEFAULT_EVENT" id="navAccountName">彭洪涛</a></li>
+							
+							<li><a href="index.cfm?event=studentPortal:logout">注销</a></li>
+						</ul>
+						<!-- /navAccountLinkPop-->
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script language="javascript" type="text/javascript">
+	//<![CDATA[
+	<!--
+	$(document).ready(function() {
+		
+		$("#navAccountLink").click(function(){
+			$("#navAccountLinkPop").toggle();
+			return false;
+		});
+		
+		$("a.jewelButton").click(function(){
+			
+			var targetID = $(this).attr('data-target');
+			$("#" + targetID).toggleClass("toggleTargetClosed");
+			$("div.triggerJewelFlyout[id!=" + targetID + "]").addClass("toggleTargetClosed");
+
+			var targetID = $(this).attr('data-icon');
+			$("#" + targetID).toggleClass("openToggler");
+			$("div.triggerJewel[id!=" + targetID + "]").removeClass("openToggler");
+			
+		});
+		
+	});
+	// -->
+	//]]>				
+</script>
+<!--/defaultHeader-->
+
+<!-- defaultContent-->
+<div id="globalContainer" class="hasLeftCol">
+	<div id="content" class="fb_content clearfix">
+		<div id="mainContainer">
+			<div id="leftColContainer">
+				<div id="leftCol">
+					<!-- pageNavigater-->
+					<!-- userProfile-->
+					<div id="pagelet_welcome_box" data-referrer="pagelet_welcome_box">
+						<div class="UIImageBlock clearfix welcomeBox">
+							<a class="welcomeBoxBlock UIImageBlock_Image UIImageBlock_MED_Image" href="index.cfm?event=studentProfile:DEFAULT_EVENT"><img class="img" src="/acadmicRes/assets/graphic/userSmall.png" style="background-image: url('user/profile_s.jpg');"></a>
+							<div class="prs UIImageBlock_Content UIImageBlock_MED_Content">
+								<a class="welcomeBoxName" href="index.cfm?event=studentProfile:DEFAULT_EVENT">彭洪涛</a>
+								<a class="welcomeBoxProfileLink" href="index.cfm?event=studentProfile:modifyProfile">修改个人档案</a>
+							</div>
+						</div>
+					</div>
+					<!--/userProfile-->
+
+					<div id="pagelet_navigation">
+						<div class="uiFutureSideNav" id="sideNav">
+							<div id="pagelet_main_nav"></div>
+							
+							<div id="pagelet_manager_nav">
+								<div class="homeSideNav mtm" id="managerNav">
+
+									
+									
+									
+									
+									
+										<div class="navHeader">学生门户</div>
+										<!-- studentPortal-->
+										<div class="mts mbm droppableNav uiSideNavSection uiFutureSideNavSection">
+											<ul class="uiSideNav" role="navigation">
+												
+												<li class="sideNavItem" id="navItem_app_studentProfile">
+													<div class="buttonWrap"></div>
+													<a class="item clearfix" href="index.cfm?event=studentProfile:DEFAULT_EVENT">
+														<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span><span class="maxCountIndicator"></span></span></div>
+														<div>
+															<span class="imgWrap"><i class="img navOperation studentProfile"></i></span>
+															<div class="linkWrap noCount">学生档案</div>
+														</div>
+													</a>
+												</li>
+												
+												<li class="sideNavItem" id="navItem_app_studentMark">
+													<div class="buttonWrap"></div>
+													<a class="item clearfix" href="index.cfm?event=studentProfile:courseMark">
+														<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span><span class="maxCountIndicator"></span></span></div>
+														<div>
+															<span class="imgWrap"><i class="img navOperation studentMark"></i></span>
+															<div class="linkWrap noCount">课程成绩</div>
+														</div>
+													</a>
+												</li>
+												
+												<li class="sideNavItem" id="navItem_app_studentPortal">
+													<div class="buttonWrap"></div>
+													<a class="item clearfix" href="index.cfm?event=studentPortal:DEFAULT_EVENT">
+														<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span><span class="maxCountIndicator"></span></span></div>
+														<div>
+															<span class="imgWrap"><i class="img navOperation studentPortal"></i></span>
+															<div class="linkWrap noCount">学习进程规划</div>
+														</div>
+													</a>
+													<ul class="show_elem">
+														<li id="navItem_app_studentPortal_courseTable">
+															<a class="subitem clearfix" href="index.cfm?event=studentPortal:courseTable">
+																<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span></span></div>
+																<div><span class="linkChild">上课安排及学费明细</span></div>
+															</a>
+														</li>
+														<li id="navItem_app_studentPortal_courseTable">
+															<a class="subitem clearfix" href="index.cfm?event=studentPortal:examTable">
+																<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span></span></div>
+																<div><span class="linkChild">考试安排</span></div>
+															</a>
+														</li>
+													</ul>
+												</li>
+												
+												<li class="sideNavItem" id="navItem_app_chooseCourse">
+													<div class="buttonWrap"></div>
+													<a class="item clearfix" href="index.cfm?event=chooseCourse:DEFAULT_EVENT">
+														<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span><span class="maxCountIndicator"></span></span></div>
+														<div>
+															<span class="imgWrap"><i class="img navOperation chooseCourse"></i></span>
+															<div class="linkWrap noCount">网上选课</div>
+														</div>
+													</a>
+													<ul >
+														<li id="navItem_app_chooseCourse_courseTable">
+															<a class="subitem clearfix" href="index.cfm?event=chooseCourse:courseTable">
+																<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span></span></div>
+																<div><span class="linkChild">个人课表</span></div>
+															</a>
+														</li>
+														<li id="navItem_app_chooseCourse_chargeByTerm">
+															<a class="subitem clearfix" href="index.cfm?event=chooseCourse:chargeByTerm">
+																<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span></span></div>
+																<div><span class="linkChild">学期学费明细表</span></div>
+															</a>
+														</li>
+													</ul>
+												</li>
+												
+												<li class="sideNavItem" id="navItem_app_cetApply">
+													<div class="buttonWrap"></div>
+													<a class="item clearfix" href="index.cfm?event=cetApply:DEFAULT_EVENT">
+														<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span><span class="maxCountIndicator"></span></span></div>
+														<div>
+															<span class="imgWrap"><i class="img navOperation cetApply"></i></span>
+															<div class="linkWrap noCount">外语等级考试</div>
+														</div>
+													</a>
+													<ul >
+														<li id="navItem_app_cetApply_cetEntryWizard">
+															<a class="subitem clearfix" href="index.cfm?event=cetApply:cetEntryWizard">
+																<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span></span></div>
+																<div><span class="linkChild">网上报名</span></div>
+															</a>
+														</li>
+													</ul>
+												</li>
+												
+												<li class="sideNavItem" id="navItem_app_voteOnline">
+													<div class="buttonWrap"></div>
+													<a class="item clearfix" href="index.cfm?event=voteOnline:DEFAULT_EVENT">
+														<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span><span class="maxCountIndicator"></span></span></div>
+														<div>
+															<span class="imgWrap"><i class="img navOperation voteOnline"></i></span>
+															<div class="linkWrap noCount">在线调查</div>
+														</div>
+													</a>
+												</li>
+												
+												<li class="sideNavItem" id="navItem_app_evaluateOnline">
+													<div class="buttonWrap"></div>
+													<a class="item clearfix" href="index.cfm?event=evaluateOnline:DEFAULT_EVENT">
+														<div class="rfloat"><img class="uiLoadingIndicatorAsync img" src="/acadmicRes/assets/graphic/loading.gif" alt="" width="16" height="11"><span class="count hidden_elem uiSideNavCount"><span class="countValue fss">0</span><span class="maxCountIndicator"></span></span></div>
+														<div>
+															<span class="imgWrap"><i class="img navOperation evaluateOnline"></i></span>
+															<div class="linkWrap noCount">教学质量评价</div>
+														</div>
+													</a>
+												</li>
+												
+											</ul>
+										</div>
+										<!-- /studentPortal-->
+									
+
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+
+									
+									
+									
+									
+									
+									
+									
+									
+
+									
+									
+									
+									
+									
+									
+									
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /pageNavigater-->
+				</div>
+			</div>
+			<div id="contentCol" class="clearfix ">
+				<div id="rightCol">
+					<!-- pageRight-->
+					
+					<!-- /pageRight-->
+				</div>
+				<div id="contentArea">
+					<!-- pageMain-->
+					<div id="headArea">
+	<div class="uiHeader uiHeaderWithImage ptm">
+		<div class="clearfix uiHeaderTop">
+			<div class="uiHeaderActions rfloat">
+				<a class="uiButton" href="index.cfm?event=studentPortal:DEFAULT_EVENT"><i class="mrs img btnPublish"></i><span class="uiButtonText">学习进程规划</span></a>
+			</div>
+			<div>
+				<h2 class="uiHeaderTitle">
+					<i class="uiHeaderImage img icon16x16 application"></i>2021-2022学年 秋季学期 - 选课课程表
+				</h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="UIElement">
+	<ul class="senateFirstPage">
+		<li>
+			<div class="clearfix" id="programCourse">
+				<div class="UItab">
+					<div class="tabLables">
+						<span class="active" id="labCourseTable" tabTarget="CourseTable">个人课表</span>
+						<span  id="labChoosen" tabTarget="Choosen">已选课程</span>
+						<span  id="labCharge" tabTarget="Charge">学费明细清单</span>
+					</div>
+				</div>
+				<script language="javascript" type="text/javascript">
+					//<![CDATA[
+					<!--
+					$(document).ready(function() {
+						
+						/* init Tab */
+						$("div.tabContent").hide();
+						$("div#" + $("div.tabLables span.active").attr("tabTarget")).show();
+						
+						$("div.tabLables > span").click(function(){
+							var $targetID = $(this).attr("tabTarget");
+							
+							$("div.tabLables span").removeClass("active");
+							$(this).addClass("active");
+							
+							$("div.tabContent").not('[id="' + $targetID + '"]').hide();
+							$("div.tabContent#" + $targetID).show();
+						});
+						
+					});
+					
+					// -->
+					//]]>
+				</script>
+				<div id="CourseTable" class="tabContent">
+					
+					<div class="noticeBlock">
+						<h3>2021-2022-1 学期 个人课表</h3>
+						<p>下列是当前学期, 您已选择修读的课程的上课安排.</p>
+						<hr/>
+					</div>
+
+					<div id="choosenCourseTable">
+						
+						<!-- studentCourseTable -->
+						<!-- courseTable -->
+
+
+
+
+		
+		
+	
+
+
+		
+		
+		
+		<table class="UICourseTable">
+			<thead>
+				<tr class="">
+					<td colspan="2" width="2%"></td>
+					<td width="14%">星期一</td>
+					<td width="14%">星期二</td>
+					<td width="14%">星期三</td>
+					<td width="14%">星期四</td>
+					<td width="14%">星期五</td>
+					<td width="14%">星期六</td>
+					<td width="14%">星期天</td>
+				</tr>
+			</thead>
+			<tbody>
+				
+					<tr>
+						
+							<td rowspan="2">上午</td>
+							
+						<td>第一讲</td>
+						
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">概率论与数理统计</span><span class="idx">[020]</span> - <span class="teacher">张高勋</span>
+											<br/>
+											<span class="week">01-13(2)</span>
+											
+											
+												<br/><span class="place">东1110</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">综合英语3</span><span class="idx">[050]</span> - <span class="teacher">李文辉</span>
+											<br/>
+											<span class="week">01-17(2)</span>
+											
+											
+												<br/><span class="place">东1308</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">马克思主义基本原理概论</span><span class="idx">[018]</span> - <span class="teacher">范岩</span>
+											<br/>
+											<span class="week">04-16(2)</span>
+											
+											
+												<br/><span class="place">东1210</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+					</tr>
+				
+					<tr>
+						
+						<td>第二讲</td>
+						
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">数字电子技术</span><span class="idx">[002]</span> - <span class="teacher">黎恒</span>
+											<br/>
+											<span class="week">01-15(2)</span>
+											
+											
+												<br/><span class="place">东1206</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">概率论与数理统计</span><span class="idx">[020]</span> - <span class="teacher">张高勋</span>
+											<br/>
+											<span class="week">01-13(2)</span>
+											
+											
+												<br/><span class="place">东1112</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">大学体育[3]-健身气功</span><span class="idx">[T13]</span> - <span class="teacher">马婷</span>
+											<br/>
+											<span class="week">05-18(2)</span>
+											
+											
+												<br/><span class="place">东区运动场</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">数字电子技术</span><span class="idx">[002]</span> - <span class="teacher">黎恒</span>
+											<br/>
+											<span class="week">01-15(2)</span>
+											
+											
+												<br/><span class="place">东1204</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+					</tr>
+				
+					<tr>
+						
+							<td rowspan="2">下午</td>
+							
+						<td>第三讲</td>
+						
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">计算机组成原理</span><span class="idx">[004]</span> - <span class="teacher">张克非</span>
+											<br/>
+											<span class="week">01-13(2)</span>
+											
+											
+												<br/><span class="place">东6附101</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">密码学数学基础</span><span class="idx">[001]</span> - <span class="teacher">巫玲</span>
+											<br/>
+											<span class="week">01-11(2)</span>
+											
+											
+												<br/><span class="place">东2208</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">计算机组成原理</span><span class="idx">[004]</span> - <span class="teacher">张克非</span>
+											<br/>
+											<span class="week">01-13(2)</span>
+											
+											
+												<br/><span class="place">东3附201</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">形势与政策3(四年制）</span><span class="idx">[013]</span> - <span class="teacher">唐兰兰</span>
+											<br/>
+											<span class="week">05-08(2)</span>
+											
+											
+												<br/><span class="place">东1210</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">密码学数学基础</span><span class="idx">[001]</span> - <span class="teacher">巫玲</span>
+											<br/>
+											<span class="week">01-11(2)</span>
+											
+											
+												<br/><span class="place">东1308</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+					</tr>
+				
+					<tr>
+						
+						<td>第四讲</td>
+						
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">马克思主义基本原理概论</span><span class="idx">[018]</span> - <span class="teacher">范岩</span>
+											<br/>
+											<span class="week">04-16(2)</span>
+											
+											
+												<br/><span class="place">东1210</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+					</tr>
+				
+					<tr>
+						
+							<td rowspan="2">晚上</td>
+							
+						<td>第五讲</td>
+						
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+									
+									
+									
+									
+										
+										
+										
+										<div class="lecture">
+											<span class="course">面向对象程序设计方法（C++）</span><span class="idx">[005]</span> - <span class="teacher">王桂娟</span>
+											<br/>
+											<span class="week">01-17(2)</span>
+											
+											
+												<br/><span class="place">东1202</span>
+											
+											
+										</div>
+										
+										
+										
+									
+									
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+					</tr>
+				
+					<tr>
+						
+						<td>第六讲</td>
+						
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+							
+							
+							
+							<td class=" ">
+								
+								
+								
+							</td>
+							
+						
+					</tr>
+				
+			</tbody>
+		</table>
+
+<!-- /courseTable -->
+						<!-- /studentCourseTable -->
+					</div>
+					
+				</div>
+				<div id="Choosen" class="tabContent">
+					
+					<div class="noticeBlock">
+						<h3>2021-2022-1 学期 已选课程清单</h3>
+						<p>下列是当前学期, 您已选择修读的所有课程清单.</p>
+						<hr/>
+					</div>
+					
+					<div id="choosenTable">
+						
+						<!-- studentChoosenTask -->
+						<table class="UIEditable">
+		<thead>
+			<tr>
+				<td width="18"></td>
+				<td>教学班</td>
+				<td>任课教师</td>
+				<td>学分</td>
+				
+				<td>修读方式</td>
+				<td>课程性质</td>
+				<td>重修</td>
+				<td>选课轮次</td>
+				<td>选课时间</td>
+			</tr>
+		</thead>
+		<tbody>
+			
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">1</span></td>
+						<td>大学体育[3]-健身气功.-.T13</td>
+						<td>马婷</td>
+						<td><span class="numeric">1.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>初选</td>
+						<td><span class="numeric">2021-06-25 10:52</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">2</span></td>
+						<td>大学物理实验B1.-.002</td>
+						<td>罗浩</td>
+						<td><span class="numeric">1.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">3</span></td>
+						<td>概率论与数理统计.-.020</td>
+						<td>张高勋</td>
+						<td><span class="numeric">3.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">4</span></td>
+						<td>计算机组成原理.-.004</td>
+						<td>张克非</td>
+						<td><span class="numeric">3.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">5</span></td>
+						<td>竞赛与实践.-.001</td>
+						<td>蒋林智</td>
+						<td><span class="numeric">1.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">6</span></td>
+						<td>马克思主义基本原理概论.-.018</td>
+						<td>范岩</td>
+						<td><span class="numeric">3.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">7</span></td>
+						<td>密码学基础实践.-.001</td>
+						<td>巫玲</td>
+						<td><span class="numeric">1.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">8</span></td>
+						<td>密码学数学基础.-.001</td>
+						<td>巫玲</td>
+						<td><span class="numeric">2.50</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">9</span></td>
+						<td>乒羽俱乐部1.-.T01</td>
+						<td>黄俊</td>
+						<td><span class="numeric">0.50</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>初选</td>
+						<td><span class="numeric">2021-06-25 09:16</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">10</span></td>
+						<td>数字电子技术.-.002</td>
+						<td>黎恒</td>
+						<td><span class="numeric">3.50</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">11</span></td>
+						<td>数字电子技术实验.-.001</td>
+						<td>刘泾</td>
+						<td><span class="numeric">0.50</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">12</span></td>
+						<td>思想政治理论课实践教学.-.019</td>
+						<td>李翠霞</td>
+						<td><span class="numeric">2.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">13</span></td>
+						<td>形势与政策3(四年制）.-.013</td>
+						<td>唐兰兰</td>
+						<td><span class="numeric">0.25</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-21 09:39</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">14</span></td>
+						<td>综合英语3.-.050</td>
+						<td>李文辉</td>
+						<td><span class="numeric">2.00</span></td>
+						
+						<td>正常</td>
+						<td>必修</td>
+						<td></td>
+						<td>其他</td>
+						<td><span class="numeric">2021-06-22 11:11</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">15</span></td>
+						<td>死亡文化与生死教育.-.S01</td>
+						<td>尔雅</td>
+						<td><span class="numeric">1.00</span></td>
+						
+						<td>正常</td>
+						<td>任选</td>
+						<td></td>
+						<td>初选</td>
+						<td><span class="numeric">2021-06-28 14:35</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">16</span></td>
+						<td>面向对象程序设计方法（C++）.-.005</td>
+						<td>王桂娟</td>
+						<td><span class="numeric">2.00</span></td>
+						
+						<td>正常</td>
+						<td>限选</td>
+						<td></td>
+						<td>初选</td>
+						<td><span class="numeric">2021-06-25 10:50</span></td>
+					</tr>
+					
+			
+				
+			
+				
+				
+
+				
+					
+					
+					
+					<tr class="editRows  ">
+						<td><span class="index">17</span></td>
+						<td>面向对象程序设计实践（C++）.-.005</td>
+						<td>王桂娟</td>
+						<td><span class="numeric">2.00</span></td>
+						
+						<td>正常</td>
+						<td>限选</td>
+						<td></td>
+						<td>初选</td>
+						<td><span class="numeric">2021-06-25 10:50</span></td>
+					</tr>
+					
+			
+		</tbody>
+	</table>
+						<!-- /studentChoosenTask -->
+					</div>
+				</div>
+				<div id="Charge" class="tabContent">
+					
+					<div class="noticeBlock">
+						<h3>2021-2022-1 学期 课程学费明细</h3>
+						<p>下列是当前学期, 您已选择修读的课程的学费及相关费用明细表.</p>
+						<hr/>
+					</div>
+					
+					<div id="chargeTable">
+						
+						<!-- chargeCourse -->
+						<table class="UIEditable">
+		<thead>
+			<tr>
+				<td width="18"></td>
+				<td>课程</td>
+				<td>学分</td>
+				<td>开课类别</td>
+				<td>修读方式</td>
+				<td>重修</td>
+				<td>学费</td>
+				<td>结算时间</td>
+				<td width="60" align="right">缴费状态</td>
+			</tr>
+		</thead>
+		<tbody>
+
+			
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">1</span></td>
+						<td>死亡文化与生死教育</td>
+						<td><span class="numeric">1.00</span></td>
+						<td>全校通选课</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">115.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">2</span></td>
+						<td>大学物理实验B1</td>
+						<td><span class="numeric">1.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">115.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">3</span></td>
+						<td>概率论与数理统计</td>
+						<td><span class="numeric">3.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">345.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">4</span></td>
+						<td>计算机组成原理</td>
+						<td><span class="numeric">3.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">345.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">5</span></td>
+						<td>竞赛与实践</td>
+						<td><span class="numeric">1.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">115.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">6</span></td>
+						<td>马克思主义基本原理概论</td>
+						<td><span class="numeric">3.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">345.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">7</span></td>
+						<td>密码学基础实践</td>
+						<td><span class="numeric">1.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">115.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">8</span></td>
+						<td>密码学数学基础</td>
+						<td><span class="numeric">2.50</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">287.50</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">9</span></td>
+						<td>面向对象程序设计方法（C++）</td>
+						<td><span class="numeric">2.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">230.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">10</span></td>
+						<td>面向对象程序设计实践（C++）</td>
+						<td><span class="numeric">2.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">230.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">11</span></td>
+						<td>数字电子技术</td>
+						<td><span class="numeric">3.50</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">402.50</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">12</span></td>
+						<td>数字电子技术实验</td>
+						<td><span class="numeric">0.50</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">57.50</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">13</span></td>
+						<td>思想政治理论课实践教学</td>
+						<td><span class="numeric">2.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">230.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">14</span></td>
+						<td>形势与政策3(四年制）</td>
+						<td><span class="numeric">0.25</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">28.75</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">15</span></td>
+						<td>综合英语3</td>
+						<td><span class="numeric">2.00</span></td>
+						<td>计划课程</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">230.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">16</span></td>
+						<td>大学体育[3]-健身气功</td>
+						<td><span class="numeric">1.00</span></td>
+						<td>体育项目</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">115.00</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+				
+				
+				
+				
+				
+				
+				
+				
+					
+					
+					
+					<tr class="editRows  ">
+						
+						<td><span class="index">17</span></td>
+						<td>乒羽俱乐部1</td>
+						<td><span class="numeric">0.50</span></td>
+						<td>体育项目</td>
+						<td>正常</td>
+						<td></td>
+
+						<td>
+							
+							
+									
+									
+									
+									<span class="numeric bold">57.50</span>
+								
+						</td>
+						
+						<td>
+							
+						</td>
+						
+						<td align="center">
+							预收
+								
+						</td>
+					</tr>
+
+					
+
+			
+		</tbody>	
+	</table>
+	
+	
+	
+	
+	
+	
+	<table class="UIEditable">
+		<tbody>	
+			<tr class="breakRowsBold">
+				<td colspan="4"></td>
+			</tr>
+			<tr>
+				<td width="18"></td>
+				<td>合计: <span class="numeric">17</span> 门课程</td>
+				<td align="center" width="40">预收</td>
+				<td align="center" width="80"><span class="numeric bold">3363.75</span></td>
+				
+				
+				
+			</tr>
+		</tbody>
+	</table>
+						<!-- /chargeCourse -->
+					</div>
+				</div>
+				
+				
+				
+			</div>
+		</li>
+	</ul>
+</div>
+					<!-- /pageMain-->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- pageFoot-->
+	<div id="pageFooter" data-referrer="page_footer">
+		<div id="contentCurve"></div>
+		<div class="clearfix" id="footerContainer">
+			<div class="mrl lfloat" role="contentinfo">
+				<div class="fsm fwn fcg"><span>互联课堂计划 © 2021</span></div>
+			</div>
+			<div class="navigation fsm fwn fcg" role="navigation">
+				
+			</div>
+		</div>
+	</div>
+	<!-- /pageFoot-->
+	
+</div>
+<!--/defaultContent-->
+
+</body>
+<!-- Page Metadata Generated On: 26-Oct-2021 10:18:07  Time Taken: 130 msecs -->
+</html>
